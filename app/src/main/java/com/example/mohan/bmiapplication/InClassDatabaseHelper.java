@@ -35,7 +35,7 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
         personValues.put("DATE", dataFormatter.format(today));
 
         db.insert(TABLE_NAME,null, personValues);
-        
+
 
     }
 
