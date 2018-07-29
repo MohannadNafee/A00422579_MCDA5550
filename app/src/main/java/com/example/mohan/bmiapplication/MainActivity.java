@@ -16,31 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        com.example.maruf.bmi_calculator.InClassDatabaseHelper helper = new com.example.maruf.bmi_calculator.InClassDatabaseHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-// run a query
-        Cursor cursor = db.query(com.example.maruf.bmi_calculator.InClassDatabaseHelper.TABLE_NAME,new String[]
-                        {"NAME","PASSWORD", "HEALTH_CARD_NUMB", "DATE"},
-                null,null,null,null,null); //
-        if (cursor.moveToFirst()){
-            String name = cursor.getString(0);
-            EditText results = (EditText) findViewById(R.id.nameText);
-            results.setText(name);
 
-            String password = cursor.getString(1);
-            EditText passwordResults = (EditText) findViewById(R.id.passwordText);
-            passwordResults.setText(password);
 
-            String healthText = cursor.getString(2);
-            EditText healthResults = (EditText) findViewById(R.id.healthCardText);
-            healthResults.setText(healthText);
-
-            String dateText = cursor.getString(3);
-            EditText dateResults = (EditText) findViewById(R.id.dateText);
-            dateResults.setText(dateText);
-        }
-        cursor.close(); // cleanup
-        db.close(); // cleanup
     }
 
 
