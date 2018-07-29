@@ -64,8 +64,8 @@ public class calculate_BMI extends AppCompatActivity {
             weight.setError("Weight should be above 50");
             isvalid = false;
         }
-        if (heightVal < 80) {
-            height.setError("Height should be above 80");
+        if (heightVal < 1 & heightVal > 2.5) {
+            height.setError("Height should be Between 1 and 2.5 m");
             isvalid = false;
         }
         return isvalid;

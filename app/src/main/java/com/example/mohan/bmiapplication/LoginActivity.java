@@ -18,10 +18,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        InClassDatabaseHelper helper = new InClassDatabaseHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        db.close();
-    }
+       }
+
+       // get input emamil and password from user
     public void signIn(View view) {
         EditText user = (EditText) findViewById(R.id.emailText);
         EditText password = (EditText) findViewById(R.id.passwordText);
@@ -39,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+    // Validation for login page
     public boolean validateFields() {
         Boolean isvalid = true;
         EditText emailText = findViewById(R.id.emailText);
@@ -56,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
         }
         return isvalid;
     }
+
+    // redirect to sign up page
     public void register(View view) {
         Intent intent = new Intent(this, SignupActivity.class);
         startActivity(intent);

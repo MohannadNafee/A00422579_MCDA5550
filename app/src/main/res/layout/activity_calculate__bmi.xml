@@ -28,14 +28,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal"
-                android:text="170" />
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cm" />
+                android:text="m" />
         </TableRow>
 
         <TableRow
@@ -53,14 +52,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal"
-                android:text="150" />
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="lb" />
+                android:text="kg" />
         </TableRow>
 
         <TableRow

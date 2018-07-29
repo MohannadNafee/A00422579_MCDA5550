@@ -14,15 +14,18 @@ import java.util.Date;
 import java.util.List;
 
 public class InClassDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "inclass";  // name of the DB
-    private static final int DB_VERSION =1;  // version of the DB
-    public static final String TABLE_NAME = "PERSON";  // name of the Table
+    private static final String DB_NAME = "inclass";  // database name
+    private static final int DB_VERSION =1;  // database version
+    public static final String TABLE_NAME = "PERSON";  // table name
     public static final String TABLE_BMI = "BMI";
 
     public InClassDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);  //   null is for cursors
     }
 
+
+    // initeate the database if it is not exists.
+    // two table, login info and BMI history.
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+TABLE_NAME+" ("
@@ -41,17 +44,6 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
                 + "DATE TEXT, "
                 + "BMI Text);");
 
-
-
-        Date today = new Date();
-        ContentValues personValues= new ContentValues();
-        personValues.put("NAME", "Mohannad Hameed");
-        personValues.put("PASSWORD", "password");
-        personValues.put("HEALTH_CARD_NUMB", "1234 5678 9101");
-        DateFormat dataFormatter = new SimpleDateFormat("MM-dd-yyyy");
-        personValues.put("DATE", dataFormatter.format(today));
-
-        db.insert(TABLE_NAME,null, personValues);
 
 
     }
@@ -90,6 +82,9 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return  true;
     }
+
+    // inserting BMI values
+
     public  void insert_BMI(String email, Double height, Double weight, Double result) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -108,6 +103,7 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_BMI, null, values);
         db.close();
     }
+    // login boolean check, if user exist return true, else false
     public  boolean checkUser(String email, String password) {
         String[] columns = {
                 "EMAIL", "PASSWORD"
@@ -134,7 +130,7 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
     }
     public List<BMI> getAllBmiValues(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + TABLE_BMI, null);
+        Cursor cursor = db.rawQuery("select * from " + TABLE_BMI ,  null);
 
 
         List<BMI> bmis = new ArrayList<>();

@@ -78,6 +78,8 @@ public class SignupActivity extends AppCompatActivity {
 
         return isValid;
     }
+
+    // redirect to login page
     public void login(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
