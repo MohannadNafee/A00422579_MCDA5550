@@ -3,6 +3,7 @@ package com.example.mohan.bmiapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -54,6 +55,9 @@ public class SignupActivity extends AppCompatActivity {
         if (email_Text.getText().toString().isEmpty()) {
             email_Text.setError("User is required!");
             isValid = false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email_Text.getText().toString()).matches()){
+            email_Text.setError("Invalid Email!");
+            isValid = false;
         }
         if (password_Text.getText().toString().isEmpty()) {
             password_Text.setError("Password is required!");
@@ -73,5 +77,9 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         return isValid;
+    }
+    public void login(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

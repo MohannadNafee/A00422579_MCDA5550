@@ -20,26 +20,55 @@ public class calculate_BMI extends AppCompatActivity {
     public void calculate(View view) {
         try {
             EditText height = (EditText) findViewById(R.id.textHeight);
-            String value = height.getText().toString();
-            Double heightVal = Double.parseDouble(value);
-            System.out.println("Here is the height "+heightVal);
-
             EditText weight = (EditText) findViewById(R.id.textWeight);
-            String weightString = weight.getText().toString();
-            Double weightVal = Double.parseDouble(weightString);
-            System.out.println("Here is the height "+weightVal);
-
-            Double calc = (weightVal / (heightVal * heightVal));
             EditText result = (EditText) findViewById(R.id.textResult);
-            result.setText(calc.toString());
 
-            InClassDatabaseHelper helper = new InClassDatabaseHelper(this);
-            helper.insert_BMI(email, heightVal, weightVal, calc);
+            if (validateFields()) {
+                String weightString = weight.getText().toString();
+                Double weightVal = Double.parseDouble(weightString);
+                System.out.println("Here is the height "+weightVal);
+
+                String value = height.getText().toString();
+                Double heightVal = Double.parseDouble(value);
+                System.out.println("Here is the height "+heightVal);
+                Double calc = (weightVal / (heightVal * heightVal));
+
+                result.setText(calc.toString());
+
+                InClassDatabaseHelper helper = new InClassDatabaseHelper(this);
+                helper.insert_BMI(email, heightVal, weightVal, calc);
+            }
         }
         catch (Exception exception){
 
         }
 
+    }
+    public boolean validateFields() {
+        Boolean isvalid = true;
+        EditText height = (EditText) findViewById(R.id.textHeight);
+        EditText weight = (EditText) findViewById(R.id.textWeight);
+        if (height.getText().toString().isEmpty()) {
+            height.setError("Please insert height!");
+            isvalid = false;
+        }
+        if (weight.getText().toString().isEmpty()) {
+            weight.setError("Please insert email!");
+            isvalid = false;
+        }
+        String weightString = weight.getText().toString();
+        Double weightVal = Double.parseDouble(weightString);
+        String value = height.getText().toString();
+        Double heightVal = Double.parseDouble(value);
+        if (weightVal < 50) {
+            weight.setError("Weight should be above 50");
+            isvalid = false;
+        }
+        if (heightVal < 80) {
+            height.setError("Height should be above 80");
+            isvalid = false;
+        }
+        return isvalid;
     }
     public void showBmiHistory(View view) {
 
