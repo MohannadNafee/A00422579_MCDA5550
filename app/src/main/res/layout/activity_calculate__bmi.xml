@@ -28,7 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="170" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -52,13 +53,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="150" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cm" />
+                android:text="lb" />
         </TableRow>
 
         <TableRow
@@ -81,8 +83,7 @@
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="cm" />
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow
@@ -129,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/holo_blue_dark"
 
+                android:onClick="showBmiHistory"
                 android:text="View All" />
 
         </TableRow>

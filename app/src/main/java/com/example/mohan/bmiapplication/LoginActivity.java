@@ -1,6 +1,7 @@
 package com.example.mohan.bmiapplication;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        InClassDatabaseHelper helper = new InClassDatabaseHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.close();
     }
     public void signIn(View view) {
         EditText user = (EditText) findViewById(R.id.emailText);
@@ -34,4 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SignupActivity.class);
         startActivity(intent);
     }
+
 }
+
+//mohannad.nafee@gmail.com
+//
